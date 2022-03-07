@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false")
+@CrossOrigin
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/employees")
