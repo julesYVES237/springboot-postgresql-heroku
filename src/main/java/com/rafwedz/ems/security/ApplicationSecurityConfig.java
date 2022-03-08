@@ -11,6 +11,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -51,7 +52,12 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/employees","/employees/{id}","/auth/login","/tasks","/tasks/count","/tasks/tasksdto",
                         "/tasks/unassigned","/tasks/unassigned/count","/tasks/assigned/count","/tasks/done",
                         "/tasks/new","/tasks/assigned","/task/assigned","/tasks/{task_id}","/tasks/nn/{employee_id}","/employees/{emp_id}/tasks","/employees/count","/employees/wages","/employees/{emp_id}/tasks/all","/employees/{emp_id}/tasks/done","/employees/{emp_id}/tasks/new").permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated()
+                .and()
+         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+               .and()
+               .authorizeRequests().and().httpBasic();
+       http.headers().cacheControl();
 
 
     }
