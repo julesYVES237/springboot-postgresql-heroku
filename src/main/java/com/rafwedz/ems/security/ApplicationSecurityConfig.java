@@ -44,13 +44,14 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
    @Override
     protected final void configure(final HttpSecurity http) throws Exception {
         http
+
                 .cors()
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/employees","/employees/{id}","/auth/login","/tasks","/tasks/count","/tasks/tasksdto",
                         "/tasks/unassigned","/tasks/unassigned/count","/tasks/assigned/count","/tasks/done",
-                        "/tasks/new","/tasks/assigned","/task/assigned","/tasks/{task_id}","/tasks/nn/{employee_id}","/employees/{emp_id}/tasks","/employees/count","/employees/wages","/employees/{emp_id}/tasks/all","/employees/{emp_id}/tasks/done","/employees/{emp_id}/tasks/new").permitAll()
+                        "/tasks/new","/tasks/assigned","/task/assigned","/tasks/{task_id}","/tasks/nn/{employee_id}","/employees/{emp_id}/tasks","/employees/count","/employees/wages","/employees/{emp_id}/tasks/all","/employees/{emp_id}/tasks/done","/employees/{emp_id}/tasks/new","http://localhost:4200/","http://localhost:4200").permitAll()
                 .anyRequest().authenticated();
 
 
