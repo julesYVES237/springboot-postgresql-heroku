@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 @RequestMapping("/auth")
 @CrossOrigin
 @AllArgsConstructor
-public class AuthController {
+public class AuthController extends  SimpleCORSFilter {
 
     private final AuthService authService;
     @CrossOrigin(origins = "*", allowedHeaders = "*")
