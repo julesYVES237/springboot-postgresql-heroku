@@ -51,8 +51,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
    @Override
     protected final void configure(final HttpSecurity http) throws Exception {
         http
-                .cors()
-                .and()
+                .cors().disable()
+
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/employees","/employees/{id}","/auth/login","/tasks","/tasks/count","/tasks/tasksdto",
@@ -74,7 +74,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
         public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
             HttpServletResponse response = (HttpServletResponse) res;
-            response.setHeader("Access-Control-Allow-Origin", "*");
+            response.setHeader("Access-Control-Allow-Origin", "http://localhost:4200/");
             response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
             response.setHeader("Access-Control-Max-Age", "3600");
             response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Content-Length, X-Requested-With");
